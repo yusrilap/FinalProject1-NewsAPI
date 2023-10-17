@@ -24,7 +24,7 @@ const NavbarComp = () => {
     return (
         <Router>
             <div className='navbar-container'>
-                <Link as={Link} to="/indonesia" className='navbar-link'>Indonesia</Link>
+                <Link as={Link} to="/" className='navbar-link'>Indonesia</Link>
                 <Link as={Link} to="/programming" className='navbar-link'>Programming</Link>
                 <Link as={Link} to="/covid" className='navbar-link'>Covid</Link>
                 <Link as={Link} to="/saved" className='navbar-link'>Saved</Link>
@@ -42,7 +42,7 @@ const NavbarComp = () => {
             </div>
             <div>
                 <Routes>
-                    <Route path="/indonesia" element={<Indonesia />} />
+                    <Route path="/" element={<Indonesia />} />
                     <Route path="/programming" element={<Programming />} />
                     <Route path="/covid" element={<Covid />} />
                     <Route path="saved" element={<Saved />} />

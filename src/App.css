@@ -24,3 +24,9 @@
   color: #2ecc71;
   margin-left: -4cm;
 }
+.indonesia-card-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { useParams } from 'react-router-dom'
 
-export default class Programming extends Component {
-    render() {
-        return (
-            <div>
-                <h2> Programming</h2>
-            </div>
-        )
-    }
+const Programming = ()=> {
+    const { id } = useParams()
+    return(
+        <div>
+            <p>{id}</p>
+        </div>
+    )
 }
+export default Programming
