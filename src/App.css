@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+.navbar-container {
+  display: flex;
+  background-color: black;
+  padding: 20px;
+  justify-content: space-around;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  margin: 0 15 px;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+.navbar-link:hover {
+  color: #2ecc71;
+}
+.search {
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  color: #2ecc71;
+  margin-left: -4cm;
+}
+.indonesia-card-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
