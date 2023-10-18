@@ -34,7 +34,6 @@ const Header = () => {
                         <Nav.Link as={Link} to="/programming">Programming</Nav.Link>
                         <Nav.Link as={Link} to="/covid19">COVID 19</Nav.Link>
                         <Nav.Link as={Link} to="/saved">Saved</Nav.Link>
-                        <Nav.Link as={Link} to="/about">About</Nav.Link>
                     </Nav>
                     <Form className="d-flex" onSubmit={handleSearch}>
                         <Form.Control
