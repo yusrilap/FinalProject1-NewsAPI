@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+<<<<<<< HEAD
 import Card from "../../components/NewsCard";
+=======
+import Card from "../components/Card";
+>>>>>>> c60267f (Slicing View)
 import { useParams } from "react-router-dom";
 
 const SearchResults = () => {

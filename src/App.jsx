@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import './App.css';
 import Navbar from './components/Navbar';
 
@@ -21,6 +22,20 @@ import Indonesia from "./pages/Indonesia";
 // import Search from "./pages/Search";
 // import About from "./pages/About";
 
+=======
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Indonesia from "./pages/Indonesia";
+// import Programming from "./pages/Programming";
+// import Covid19 from "./pages/Covid19";
+// import Saved from "./pages/Saved";
+// import Search from "./pages/Search";
+// import About from "./pages/About";
+
+>>>>>>> c60267f (Slicing View)
 const App = () => {
     return (
         <div className="app_container">
@@ -36,7 +51,10 @@ const App = () => {
             <Footer />
         </div>
     );
+<<<<<<< HEAD
 >>>>>>> yusrilap
+=======
+>>>>>>> c60267f (Slicing View)
 }
 
 export default App;
