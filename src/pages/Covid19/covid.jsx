@@ -1,44 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import Card from '../components/Card'; 
-
-// Meika make fetch dulu yahh soalnya Api Support ini 
-const fetchDataFromAPI = async () => {
-    try {
-        const apiKey = '8cd6a6e72b3f2a2ebde0acf4cc92767f';
-        const response = await fetch(`https://gnews.io/api/v4/search?q=example&lang=en&max=10&token=${apiKey}`);
-        const data = await response.json();
-        return data.articles;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return [];
-    }
-};
+import React, { useState, useEffect } from "react";
+import { InfinitySpin } from "react-loader-spinner";
+import { getNews } from "../../api/newsAPI";
+import NewsCards from "../../components/NewsCards";
+import SectionHeader from "../../components/SectionHeader";
 
 const Covid = () => {
-    const [articles, setArticles] = useState([]);
+    const [data, setDatas] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const data = await fetchDataFromAPI();
-            setArticles(data);
-        };
-
-        fetchData(); 
+        getNews("Covid19").then(res => setDatas(res.data.articles));
     }, []);
 
     return (
-        <div className="indonesia-card-container">
-            {articles.map((item, index) => (
-                <Card
-                key={index}
-                author={item.author}
-                title={item.title}
-                name={item.name}
-                handleOnClickNewsPage={item.url}
-                handleOnClickSave={()=>console.log(item)}
-                />
-            ))}
-        </div>
+        <>
+            <SectionHeader title="Covid19 News" />
+            {
+                data ?
+                    <NewsCards data={data} />
+                    :
+                    <InfinitySpin color="black" />
+            }
+        </>
     );
 };
 
