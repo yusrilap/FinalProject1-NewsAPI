@@ -19,10 +19,18 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Button, Card, Col } from "react-bootstrap";
-// import { addSaved } from "../../redux/NewsSlice";
+import { addSaved } from "../../redux/NewsSlice";
 
 const NewsCard = ({ data }) => {
     const dispatch = useDispatch();
+
+    const handleSave = () => {
+        dispatch(addSaved(data));
+        Swal.fire({
+            title: "Item Saved!",
+            icon: "success"
+        });
+    };
 
     return (
         <Col>
@@ -33,7 +41,7 @@ const NewsCard = ({ data }) => {
                     <Card.Subtitle className="my-3">{data.source.name}</Card.Subtitle>
                     <Card.Text>{data.description}</Card.Text>
                     <Button variant="info" href={data.url} target="_blank">News Page</Button>{" "}
-                    <Button as={Link} variant="success" onClick="">Save</Button>
+                    <Button as={Link} variant="success" onClick={handleSave}>Save</Button>
                 </Card.Body>
             </Card>
         </Col>

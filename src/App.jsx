@@ -7,7 +7,8 @@ import Indonesia from "./pages/Indonesia";
 import Saved from "./pages/Saved";
 import Programming from "./pages/Programming/Programming";
 import Covid from "./pages/Covid19/covid";
-// import Search from "./pages/Search";
+import Search from "./pages/Search";
+
 const App = () => {
     return (
         <div className="app_container">
@@ -17,7 +18,7 @@ const App = () => {
                 <Route path="/programming" element={<Programming/>}/>
                 <Route path="/covid19" element={<Covid/>}/>
                 <Route path="/saved"  element={<Saved />}/>
-                <Route path="/search/:keyword"/>
+                <Route path="/search/:keyword" element={<Search />}/>
             </Routes>
             <Footer />
         </div>
