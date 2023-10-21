@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 import styles from "./style.module.css";
 
@@ -7,16 +7,9 @@ const Header = () => {
     const navigate = useNavigate();
 
     const [keyword, setKeyword] = useState("");
-
-    const handleSearch = (e) => {
-        e.preventDefault();
-
-        keyword ?
-            navigate(`/search/${keyword}`)
-            :
-            navigate(`/search/all`)
+    const handleSearch = () => {
+        keyword.length > 0 ? navigate(`/search/${keyword}`) : console.log('tidak ada ')
     };
-
     return (
         <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
             <Container>
@@ -43,7 +36,6 @@ const Header = () => {
                             value={keyword}
                             onChange={(e) => {
                                     setKeyword(e.target.value);
-                                    console.log(keyword)
                                 }
                             }
                         />

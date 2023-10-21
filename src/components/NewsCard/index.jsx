@@ -21,7 +21,7 @@ import { useDispatch } from "react-redux";
 import { Button, Card, Col } from "react-bootstrap";
 // import { addSaved } from "../../redux/NewsSlice";
 
-const NewsCard = ({ data }) => {
+const NewsCard = ({ data,handleOnSave }) => {
     const dispatch = useDispatch();
 
     return (
@@ -33,7 +33,7 @@ const NewsCard = ({ data }) => {
                     <Card.Subtitle className="my-3">{data.source.name}</Card.Subtitle>
                     <Card.Text>{data.description}</Card.Text>
                     <Button variant="info" href={data.url} target="_blank">News Page</Button>{" "}
-                    <Button as={Link} variant="success" onClick="">Save</Button>
+                    <Button as={Link} variant="success" onClick={handleOnSave}>Save</Button>
                 </Card.Body>
             </Card>
         </Col>

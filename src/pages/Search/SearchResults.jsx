@@ -1,36 +1,34 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-
 import { useParams } from "react-router-dom";
 import { InfinitySpin } from "react-loader-spinner";
 import NewsCards from "../../components/NewsCards";
 import SectionHeader from "../../components/SectionHeader";
+import { getNews } from "../../api/newsAPI";
+
 const SearchResults = () => {
-    const [data,setData] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [data,setDatas] = useState('');
+    const [loading,setLoading] = useState(false)
     const params = useParams();
-    const getData = async()=> {
-        setLoading(true);
-        try{
-            const response = await axios.get(`https://newsapi.org/v2/everything?q=${params.search}&apiKey=c5caa90dbadd4298a09aa6a81456e702`);
-            setData(response.data.articles)
-            console.log(response)
-        }catch(e){
-            console.log(e)
-        }
-        setLoading(false);
-    }
     useEffect(()=> {
-        getData()
+        setLoading(true)
+        getNews(params.keyword).
+            then(res => setDatas(res.data.articles))
+            .catch(error => {
+                console.error("Error fetching news:", error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     },[params])
     return (
         <>
-            <SectionHeader title="Indonesia News" />
+            <SectionHeader title={params.keyword} />
             {
-                data ?
-                    <NewsCards data={data} />
-                    :
+                loading ? (
                     <InfinitySpin color="black" />
+                ) : (
+                    data && <NewsCards data={data} />
+                )
             }
         </>
     )
