@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-
-/** Generate random id */
 import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
@@ -17,10 +15,13 @@ export const newsSlice = createSlice({
         deleteSaved: (state, action) => {
             const newList = state.saved.filter((data) => data.id !== action.payload);
             state.saved = newList;
+        },
+        clearSaved: (state)=> {
+            state.saved = []
         }
     },
 })
 
-export const { addSaved, deleteSaved } = newsSlice.actions;
+export const { addSaved, deleteSaved,clearSaved } = newsSlice.actions;
 
 export default newsSlice.reducer;
