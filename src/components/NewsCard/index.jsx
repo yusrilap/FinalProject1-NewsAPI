@@ -41,11 +41,7 @@ const NewsCard = ({ data,handleOnSave }) => {
                     <Card.Subtitle className="my-3">{data.source.name}</Card.Subtitle>
                     <Card.Text>{data.description}</Card.Text>
                     <Button variant="info" href={data.url} target="_blank">News Page</Button>{" "}
-<<<<<<< HEAD
-                    <Button as={Link} variant="success" onClick={handleSave}>Save</Button>
-=======
                     <Button as={Link} variant="success" onClick={handleOnSave}>Save</Button>
->>>>>>> dev
                 </Card.Body>
             </Card>
         </Col>
