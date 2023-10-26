@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
     saved: []
@@ -10,10 +9,10 @@ export const newsSlice = createSlice({
     initialState,
     reducers: {
         addSaved: (state, action) => {
-            state.saved = [...state.saved, { ...action.payload, id: uuidv4() }];
+            state.saved = [...state.saved, { ...action.payload}];
         },
         deleteSaved: (state, action) => {
-            const newList = state.saved.filter((data) => data.id !== action.payload);
+            const newList = state.saved.filter((data) => data.url !== action.payload);
             state.saved = newList;
         },
         clearSaved: (state)=> {

@@ -20,7 +20,6 @@ const store = configureStore({
         serializableCheck: false
     })
 });
-console.log(store.getState())
 
 const persistor = persistStore(store);
 
