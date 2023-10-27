@@ -7,7 +7,6 @@ import Saved from "./pages/Saved";
 import Programming from "./pages/Programming/Programming";
 import Covid from "./pages/Covid19/covid";
 import Search from "./pages/Search/SearchResults";
-
 const App = () => {
     return (
         <div className="app_container">
