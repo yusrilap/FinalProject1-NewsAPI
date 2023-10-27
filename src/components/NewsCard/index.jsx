@@ -1,28 +1,18 @@
-// import { Link } from "react-router-dom"
-// import "./Card.css"
-// const Card = ({author,title,name,handleOnClickNewsPage,handleOnClickSave})=> {
-//     return(
-//         <div className="card-container">
-//             <p>{author}</p>
-//             <h3>{title}</h3>
-//             <p>{name}</p>
-//             <div className="card-container-btn">
-//                 <Link to={handleOnClickNewsPage} target="_blank" className="btn-newPage">New Page</Link>
-//                 <button className="btn-save" onClick={handleOnClickSave}>Save</button>
-//             </div>
-//         </div>
-//     )
-// }
-// export default Card
-
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { Button, Card, Col } from "react-bootstrap";
+<<<<<<< HEAD
 import { addSaved } from "../../redux/NewsSlice";
+=======
+import { addSaved, deleteSaved } from "../../redux/NewsSlice";
+import { useDispatch, useSelector} from "react-redux";
+import { useState } from "react";
+>>>>>>> dev
 
-const NewsCard = ({ data,handleOnSave }) => {
+const NewsCard = ({ data}) => {
+    const savedData = useSelector(state => state.news.saved);
     const dispatch = useDispatch();
+<<<<<<< HEAD
 
     const handleSave = () => {
         dispatch(addSaved(data));
@@ -32,16 +22,30 @@ const NewsCard = ({ data,handleOnSave }) => {
         });
     };
 
+=======
+    const isSaved = savedData.some((item) => item.url === data.url);
+    const updatedData = { ...data,isSaved };
+    const [datas, setDatas] = useState(updatedData);
+    const handleOnSave=()=> {
+        const updatedIsSave = !datas.isSaved;
+        if(updatedIsSave){
+            dispatch(addSaved({ ...datas, isSaved: updatedIsSave }));
+        }else{
+            dispatch(deleteSaved(datas.url))
+        }
+        setDatas({ ...datas, isSaved: updatedIsSave });
+    }
+>>>>>>> dev
     return (
         <Col>
             <Card style={{ minHeight: "30rem" }} className="m-2 mt-4">
-                <Card.Img variant="top" src={data.urlToImage} alt="thumbnail" style={{ height: "15rem" }} />
+                <Card.Img variant="top" src={datas.urlToImage} alt="thumbnail" style={{ height: "15rem" }} />
                 <Card.Body>
-                    <Card.Title>{data.title}</Card.Title>
-                    <Card.Subtitle className="my-3">{data.source.name}</Card.Subtitle>
-                    <Card.Text>{data.description}</Card.Text>
-                    <Button variant="info" href={data.url} target="_blank">News Page</Button>{" "}
-                    <Button as={Link} variant="success" onClick={handleOnSave}>Save</Button>
+                    <Card.Title>{datas.title}</Card.Title>
+                    <Card.Subtitle className="my-3">{datas.source.name}</Card.Subtitle>
+                    <Card.Text>{datas.description}</Card.Text>
+                    <Button variant="info" href={datas.url} target="_blank">News Page</Button>{" "}
+                    <Button as={Link} variant={datas.isSaved ? "danger": "success"} onClick={()=>handleOnSave()} >{datas.isSaved ? 'Un-Save': 'Save'}</Button>
                 </Card.Body>
             </Card>
         </Col>

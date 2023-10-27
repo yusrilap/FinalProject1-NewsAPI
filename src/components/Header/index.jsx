@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
-import styles from "./style.module.css";
 
 const Header = () => {
     const navigate = useNavigate();
 
     const [keyword, setKeyword] = useState("");
     const handleSearch = () => {
-        keyword.length > 0 ? navigate(`/search/${keyword}`) : console.log('tidak ada ')
+        keyword.length > 0 ? navigate(`/search/${keyword}`) : navigate(`/search`) 
     };
     return (
         <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
@@ -28,7 +27,13 @@ const Header = () => {
                         <Nav.Link as={Link} to="/covid19">COVID 19</Nav.Link>
                         <Nav.Link as={Link} to="/saved">Saved</Nav.Link>
                     </Nav>
-                    <Form className="d-flex">
+                    <Form 
+                        className="d-flex"
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            handleSearch();
+                        }
+                    }>
                         <Form.Control
                             type="text"
                             placeholder="Search"
@@ -38,10 +43,12 @@ const Header = () => {
                                     setKeyword(e.target.value);
                                 }
                             }
+                            
                         />
                         <Button
                             variant="primary"
-                            onClick={handleSearch}>
+                            type="submit"
+                            >
                             Search
                         </Button>
                     </Form>

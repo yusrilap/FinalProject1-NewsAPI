@@ -9,7 +9,6 @@ const Indonesia = () => {
     const getData = async()=> {
         try{
             const response = await axios.get('https://newsapi.org/v2/top-headlines?country=id&apiKey=72b9597ef47e43dc83d993251e9caaac');
-            console.log(response.data.articles)
             setDatas(response.data.articles)
         }catch(e){
             console.log(e)
