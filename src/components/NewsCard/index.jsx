@@ -1,28 +1,13 @@
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Button, Card, Col } from "react-bootstrap";
-<<<<<<< HEAD
-import { addSaved } from "../../redux/NewsSlice";
-=======
 import { addSaved, deleteSaved } from "../../redux/NewsSlice";
 import { useDispatch, useSelector} from "react-redux";
 import { useState } from "react";
->>>>>>> dev
 
 const NewsCard = ({ data}) => {
     const savedData = useSelector(state => state.news.saved);
     const dispatch = useDispatch();
-<<<<<<< HEAD
-
-    const handleSave = () => {
-        dispatch(addSaved(data));
-        Swal.fire({
-            title: "Item Saved!",
-            icon: "success"
-        });
-    };
-
-=======
     const isSaved = savedData.some((item) => item.url === data.url);
     const updatedData = { ...data,isSaved };
     const [datas, setDatas] = useState(updatedData);
@@ -35,7 +20,6 @@ const NewsCard = ({ data}) => {
         }
         setDatas({ ...datas, isSaved: updatedIsSave });
     }
->>>>>>> dev
     return (
         <Col>
             <Card style={{ minHeight: "30rem" }} className="m-2 mt-4">
